@@ -3,8 +3,8 @@
 import cron from "node-cron";
 import dotenv from "dotenv";
 import connectMongo from "./config/db.js";
-import { generateAllBlogs } from "./generators/blogGenerator.js";
-import { generateAllPodcasts } from "./generators/podcastGenerator.js";
+import { generateAllBlogs } from "./ai/blogGenerator.js";
+import { generateAllPodcasts } from "./ai/podcastGenerator.js";
 
 dotenv.config();
 
