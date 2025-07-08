@@ -1,0 +1,44 @@
+node_modules/
+.env
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+
+# Frontend
+ai-talks-frontend/node_modules/
+ai-talks-frontend/.env
+ai-talks-frontend/dist/
+
+# Backend
+ai-talks-backend/node_modules/
+ai-talks-backend/.env
+ai-talks-backend/uploads/
+ai-talks-backend/logs/
+
+# System
+.DS_Store
+*.log
+.env
+

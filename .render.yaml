@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ai-blogger-scheduler
+    env: node
+    plan: free
+    rootDir: ai-talks-backend
+    buildCommand: npm install
+    startCommand: node scheduler.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        fromEnvVar: MONGO_URI
+      - key: OPENROUTER_API_KEY
+        fromEnvVar: OPENROUTER_API_KEY
+      - key: HUGGINGFACE_API_KEY
+        fromEnvVar: HUGGINGFACE_API_KEY
+      - key: ADMIN_KEY
+        fromEnvVar: ADMIN_KEY
