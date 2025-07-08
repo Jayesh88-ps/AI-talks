@@ -2,8 +2,8 @@ name: Weekly AI Scheduler
 
 on:
   schedule:
-    - cron: '30 4 * * 6'  # Runs every Saturday at 10:00 AM IST (4:30 UTC)
-  workflow_dispatch:      # Allow manual trigger from GitHub UI
+    - cron: '30 4 * * 6' # Every Saturday at 10:00 AM IST
+  workflow_dispatch:     # Allows manual runs from GitHub UI
 
 jobs:
   run-scheduler:
@@ -14,18 +14,18 @@ jobs:
         working-directory: ai-talks-backend
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run AI Scheduler
+      - name: Run AI Blogger Scheduler
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
