@@ -1,0 +1,39 @@
+name: Weekly AI Scheduler
+
+on:
+  schedule:
+    - cron: '30 4 * * 6'  # Runs every Saturday at 10:00 AM IST (4:30 UTC)
+  workflow_dispatch:      # Allow manual trigger from GitHub UI
+
+jobs:
+  run-scheduler:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ai-talks-backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run AI Scheduler
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_BASE_URL: ${{ secrets.OPENROUTER_BASE_URL }}
+          HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
+          HUGGINGFACE_BASE_URL: ${{ secrets.HUGGINGFACE_BASE_URL }}
+          ADMIN_KEY: ${{ secrets.ADMIN_KEY }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+        run: node scheduler.js
