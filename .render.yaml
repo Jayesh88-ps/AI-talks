@@ -10,10 +10,14 @@ services:
       - key: PORT
         value: 5000
       - key: MONGO_URI
-        fromEnvVar: MONGO_URI
+        sync: false
       - key: OPENROUTER_API_KEY
-        fromEnvVar: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_BASE_URL
+        value: https://openrouter.ai/api/v1/chat/completions
       - key: HUGGINGFACE_API_KEY
-        fromEnvVar: HUGGINGFACE_API_KEY
+        sync: false
+      - key: HUGGINGFACE_BASE_URL
+        value: https://api-inference.huggingface.co/models
       - key: ADMIN_KEY
-        fromEnvVar: ADMIN_KEY
+        sync: false
